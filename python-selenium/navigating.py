@@ -22,8 +22,15 @@ element = driver.find_element(By.ID, "passwd-id")
 #     print("Value is: %s" % option.get_attribute("value"))
 #     option.click()
 
-select = Select(driver.find_element(By.NAME, 'human_being'))
-select.select_by_value("female")
+# select = Select(driver.find_element(By.NAME, 'human_being'))
+# select.select_by_value("male")
 
+# select = Select(driver.find_element(By.ID, 'human_being'))
+# select.deselect_all()
+
+select = Select(driver.find_element(By.XPATH, "//select[@name='human_being']"))
+all_selected_options = select.all_selected_options
+for option in all_selected_options:
+    print(option.get_attribute("value"))
 time.sleep(10)
 driver.close()
